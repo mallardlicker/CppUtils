@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libCppUtils.a CMakeFiles/CppUtils.dir/cpp/CppUtils/file/File.cpp.o CMakeFiles/CppUtils.dir/cpp/CppUtils/file/FileDialog.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libCppUtils.a

@@ -2,7 +2,8 @@
 .DS_Store
 
 # Ignore build results
-/build
+build/
 
 # Ignore sublime-project file
-CppUtils.sublime-project
+*.sublime-project
+*.sublime-workspace

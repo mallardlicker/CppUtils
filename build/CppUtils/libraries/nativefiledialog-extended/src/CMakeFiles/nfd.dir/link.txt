@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libnfd.a CMakeFiles/nfd.dir/nfd_cocoa.m.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libnfd.a
