@@ -1,0 +1,13 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+includedir=/usr/local/include
+libdir=/usr/local/lib
+
+Name: CPPUTILS
+Description: Base engine and libraries for project.
+Version: 0.0.1
+URL: n/a
+Requires.private: 
+Libs: -L${libdir} -lCppUtils
+Libs.private: 
+Cflags: -I${includedir}
