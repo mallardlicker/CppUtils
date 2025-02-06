@@ -1,0 +1,8 @@
+# Ignore system files
+.DS_Store
+
+# Ignore build results
+/build
+
+# Ignore sublime-project file
+CppUtils.sublime-project
