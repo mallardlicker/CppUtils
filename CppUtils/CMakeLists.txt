@@ -206,7 +206,7 @@ set(CPPUTILS_PKG_CONFIG_REQUIRES_PRIVATE "${deps}" CACHE INTERNAL
 set(CPPUTILS_PKG_CONFIG_LIBS_PRIVATE "${libs}" CACHE INTERNAL
     "CPPUTILS pkg-config Libs.private")
 
-configure_file("${CPPUTILS_SOURCE_DIR}/CMake/CppUtils.pc.in" CppUtils.pc @ONLY)
+configure_file("${CPPUTILS_SOURCE_DIR}/CMake/CppUtils.pc.in" src/CppUtils.pc @ONLY)
 
 if (CPPUTILS_INSTALL)
     install(TARGETS CppUtils
