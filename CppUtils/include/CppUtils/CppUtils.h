@@ -25,8 +25,15 @@ namespace CppUtils {
 	namespace Logger {
 
 		#define Info(msg, ...) MacroWillCall(0, msg, 0, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
+		
+		#if DEBUG_BUILD
 		#define Debug(msg, ...) MacroWillCall(0, msg, 1, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
 		#define Warning(msg, ...) MacroWillCall(0, msg, 2, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
+		#else
+		#define Debug(msg, ...) MacroWillCall(1, msg, 1, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
+		#define Warning(msg, ...) MacroWillCall(1, msg, 2, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
+		#endif
+		
 		#define Error(msg, ...) MacroWillCall(0, msg, 3, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
 		#define Assert(val, msg, ...) MacroWillCall(val, msg, 4, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
 		
@@ -71,23 +78,12 @@ namespace CppUtils {
 		}
 	} // Logger namespace
 	
-	inline void CppUtils_Init(bool doDebugText = false) {
+	inline void CppUtils_Init() {
 		
-		if (doDebugText) {
-			
-			Logger::Debug("Initializing CppUtils");
-			
-			Logger::Debug("Initializing NFD");
-		}
-		
+		Logger::Debug("Initializing CppUtils");
+		Logger::Debug("Initializing NFD from within CppUtils");
 		NFD_Init();
-		
-		if (doDebugText) {
-			
-			Logger::Debug("\t\tDone");
-			
-			Logger::Debug("Done initializing CppUtils");
-		}
+		Logger::Debug("Done initializing CppUtils");
 	}
 }
 

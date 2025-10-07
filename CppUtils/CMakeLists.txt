@@ -182,6 +182,13 @@ target_include_directories(CppUtils PRIVATE
 
 target_link_libraries(CppUtils PUBLIC ${CppUtils_LINKED_LIBS})
 
+target_compile_definitions(CppUtils PRIVATE 
+    $<$<CONFIG:Debug>:DEBUG_BUILD=1>
+    $<$<CONFIG:Debug>:RELEASE_BUILD=0>
+    $<$<CONFIG:Release>:DEBUG_BUILD=0>
+    $<$<CONFIG:Release>:RELEASE_BUILD=1>
+)
+
 
 # ===================================================================================
 #   Generate and install library
