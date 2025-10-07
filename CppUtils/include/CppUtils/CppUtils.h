@@ -82,8 +82,7 @@ namespace CppUtils {
 		
 		Logger::Debug("Initializing CppUtils");
 		Logger::Debug("Initializing NFD from within CppUtils");
-		NFD_Init();
-		Logger::Debug("Done initializing CppUtils");
+		Logger::Assert(NFD_Init() == NFD_OKAY, "Failed to initialize NFD.");
 	}
 }
 
