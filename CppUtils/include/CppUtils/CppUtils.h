@@ -56,6 +56,7 @@ namespace CppUtils {
 
 		inline void MacroWillCall(bool sendMsg, std::string msg, int severity, std::string fileName, int lineNum, std::string functionName, ...) {
 			if (!sendMsg) {
+				// Get message from args buffer and convert to std::string
 				char* printfBuffer = new char[300];
 				
 				va_list args;
@@ -64,11 +65,20 @@ namespace CppUtils {
 				
 				msg = std::string(printfBuffer);
 				
+				// Generate formatted output message
 				std::string formattedMsg;
-				if (severity > 0) {
-					formattedMsg += fileName + "::" + functionName + "(), line " + std::to_string(lineNum) + ".\n";
+				formattedMsg += "\t" + ToString(severity) + ": ";
+				if (severity == 0) {
+					size_t lastSlash = fileName.find_last_of('/');
+					size_t start = (lastSlash == std::string::npos) ? 0 : lastSlash + 1;
+					size_t firstDot = fileName.find('.', start);
+					formattedMsg += fileName.substr(start, firstDot - start) + " - ";
 				}
-				formattedMsg += "\t" + ToString(severity) + ": " + msg;
+				formattedMsg += msg;
+				if (severity > 0) {
+					// Add full filename, calling function name, and line number
+					formattedMsg += "\n\t\t" + fileName + "::" + functionName + "(), line " + std::to_string(lineNum) + ".";
+				}
 				
 				std::cout << (formattedMsg) << std::endl;
 				
