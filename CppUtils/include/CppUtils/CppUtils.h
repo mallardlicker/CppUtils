@@ -74,6 +74,11 @@ namespace CppUtils {
 					size_t firstDot = fileName.find('.', start);
 					formattedMsg += fileName.substr(start, firstDot - start) + " - ";
 				}
+				if (msg.at(0) == '\n') {
+					// move any leading \n to the front of the formatted message
+					msg = msg.substr(1);
+					formattedMsg = "\n" + formattedMsg;
+				}
 				formattedMsg += msg;
 				if (severity > 0) {
 					// Add full filename, calling function name, and line number
